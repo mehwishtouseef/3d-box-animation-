@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: rgb(182, 140, 3);
+    overflow: hidden;
+}
+
+.bg-image {
+
+
+    position: relative;
+    width: auto;
+    height: 70%;
+    background-image: url('girl.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.stars::before,
+.stars::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, gold 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.6;
+    animation: twinkle 5s linear infinite;
+}
+
+.stars::after {
+    opacity: 0.4;
+    animation-delay: 2.5s;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-10%, -10%);
+    }
+}
+
+#shape {
+    position: relative;
+    width: calc(5vw + 5vh);
+    height: calc(40vw + 40vh);
+    animation: rotate 60s linear infinite;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    z-index: 2;
+}
+
+#shape div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 3px solid black;
+    box-sizing: border-box;
+}
+
+
+.front {
+    transform: rotateY(0deg) translateZ(calc(5vw + 5vh));
+}
+
+.back {
+    transform: rotateY(180deg) translateZ(calc(5vw + 5vh));
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(calc(5vw + 5vh));
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(calc(5vw + 5vh));
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(calc(5vw + 5vh));
+}
+
+.bottom {
+    transform: rotateX(-90deg) translateZ(calc(5vw + 5vh));
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
